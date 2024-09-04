@@ -2,29 +2,54 @@ import { createContext, useContext, useEffect } from "react";
 
 const AuthContext = createContext({})
 
+export const Role = {
+    SUPER: "SUPER",
+    ADM: "ADM",
+    USER: "USER",
+};
+
 export function AuthProvider({ children }) {
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState({
+        autenticad: null,
+        user: null,
+        role: null,
+    });
 
-    const signIn = ({ email, password }) => {
+    const signIn = async ({ email, password }) => {
         if (email === "super@email.com" && password === "super123!") {
-        setUser({ id: 1, name: 'Super', email, role: "SUPER" });
-    }
-    
-    const signIn = ({ email, password }) => {
-        if (email === "adm@email.com" && password === "Adm123!") {
-        setUser({ id: 2, name: 'Adm', email, role: "ADM" });
-    }
+            setUser({
+                autenticad: true,
+                user:{ id: 1, name: 'Super Usuário', email},
+                role: Role.SUPER,
+            });
+        }
 
-    const signIn = ({ email, password }) => {
-        if (email === "user@email.com" && password === "user123!") {
-        setUser({ id: 3, name: 'User', email, role: "USER" });
-    }
-    //setUser({ id: 1, name: 'usuário 1', email });
+        else if (email === "adm@email.com" && password === "Adm123!") {
+            setUser({
+                autenticad: true,
+                user:{ id: 1, name: 'Admininstrador', email},
+                role: Role.ADM,
+            });
+        }
+
+       else if (email === "user@email.com" && password === "User123!") {
+            setUser({
+                autenticad: true,
+                user:{ id: 1, name: 'Usuário', email},
+                role: Role.ADM,
+            });
+        } else{
+            setUser({
+                autenticad: false,
+                user: null,
+                role: null,
+
+            })
+        }
     };
+
     const signOut = () => {
         setUser({});
-    };
-
 
     useEffect(()=>{
         console.log ('AuthProvider: ', user);
@@ -34,7 +59,7 @@ export function AuthProvider({ children }) {
             {children}
         </AuthContext.Provider>
     )
-}
+} };
 
 export function useAuth() {
     const context = useContext(AuthContext);
