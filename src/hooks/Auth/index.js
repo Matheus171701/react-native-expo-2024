@@ -48,7 +48,7 @@ export function AuthProvider({ children }) {
         }
     };
 
-    const signOut = () => {
+    const signOut = async() => {
         setUser({});
 
     useEffect(()=>{
