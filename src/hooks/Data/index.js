@@ -1,24 +1,24 @@
 import { SQLiteProvider } from "expo-sqlite";
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react"
 import { initializeDatabase } from "../../database/initializeDatabase";
 
-const dataContext = createContext({});
+const DataContext = createContext({});
 
-export function dataProvider({children}) {
-    const [data, setData] = useState(flase);
-     return(
-    <DataContext.Provider value={{data}}>
-    <SQLiteProvider databaseName="data.db" onInit={initializeDatabase}>
-        {children}
-    </SQLiteProvider>
-    </DataContext.Provider>
+export function DataProvider({children}){
+    const [data, setData] = useState(false);
+    return(
+        <DataContext.Provider value={{data}}>
+            <SQLiteProvider databaseName="data.db" onInit={initializeDatabase}>
+                {children}
+            </SQLiteProvider>
+        </DataContext.Provider>
     );
 }
 
-export function useData() {
+export function useData(){
     const context = useContext(DataContext);
-    if (!context) {
-        throw new Error('useData must be used within a DataProvider');
+    if(!context){
+        throw new Error("useData must be used within a DataProvider");
     }
     return context;
 }

@@ -1,6 +1,6 @@
-import { Children } from "react";
 import { FontProvider } from "./Font";
 import { AuthProvider } from "./Auth";
+import { DataProvider } from "./Data";
 
 export function AppProvider({ children }) {
     return 

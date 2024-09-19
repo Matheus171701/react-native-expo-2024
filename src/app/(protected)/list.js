@@ -1,9 +1,11 @@
-import {Text, View} from "react-native";
+import { Text, View } from "react-native";
 
-export default function List() {
-    return (
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <Text>Listagem</Text>
+export default function List(){
+    return(
+        <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+            <Text>
+                Listagem
+            </Text>
         </View>
     )
 }
