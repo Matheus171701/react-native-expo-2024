@@ -7,7 +7,7 @@ import {Ionicons} from "@expo/vector-icons"
 
 export default function App() {
   const { signIn, signOut } = useAuth();
-  const [email, setEmail] = useState("super@gmail.com");
+  const [email, setEmail] = useState("super@email.com");
   const [password, setPassword] = useState("A123456a!");
   const [passwordVisiblity, setPasswordVisibility] = useState(false);
 
