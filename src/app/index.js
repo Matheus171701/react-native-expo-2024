@@ -1,15 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { BackHandler, Button, StyleSheet, Text, View } from 'react-native';
+import { BackHandler, Button, StyleSheet, Text, View, TextInput} from 'react-native';
 import { useAuth } from '../hooks/Auth';
 import { router } from 'expo-router';
-import { TextInput } from 'react-native-gesture-handler';
 import { useState } from 'react';
+import {Ionicons} from "@expo/vector-icons"
 
 export default function App() {
   const { signIn, signOut } = useAuth();
   const [email, setEmail] = useState("super@gmail.com");
   const [password, setPassword] = useState("A123456a!");
-  const [passwordVisiblity, setPasswordVisibility] = useState(flase);
+  const [passwordVisiblity, setPasswordVisibility] = useState(false);
 
   const tooglePasswordVisibility = () => {
     setPasswordVisibility(!passwordVisiblity);
@@ -42,7 +42,7 @@ export default function App() {
         <TextInput
           style={styles.emailinput}
           placeholder="Senha"
-          value={email}
+          value={password}
           onChange={setPassword}
           secureTextEntry={passwordVisiblity}
         />
@@ -91,6 +91,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   button:{
-    width: 100%
+    width: 100,
   }
 });

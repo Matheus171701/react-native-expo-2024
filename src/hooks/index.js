@@ -3,10 +3,10 @@ import { AuthProvider } from "./Auth";
 import { DataProvider } from "./Data";
 
 export function AppProvider({ children }) {
-    return 
+    return (
     <FontProvider>
         <DataProvider>
         <AuthProvider>{children}</AuthProvider>
         </DataProvider>
-    </FontProvider>;
+    </FontProvider>)
 }
